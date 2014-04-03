@@ -1,0 +1,226 @@
+<?php 
+mysql_connect('localhost','root','');
+
+mysql_select_db('ttubayec_ping'); 
+?>
+
+<html>
+<head>
+<title>Jeu des taupes !</title>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'/></script>
+<link type="text/css" rel="stylesheet" media="screen" href="style.css"/>
+<script type="text/javascript">
+$(document).ready(function() {
+
+var timer=setInterval(function() { gererTimer();}, 1000);
+clearInterval(timer);
+var compte=31;
+var score=0;
+var peutcliker=true;
+var triop = 1 + Math.floor(Math.random() * 6);
+var imageUrl='images/taupe2.png';
+$('#taupe'+triop).css('background-image', 'url(' + imageUrl + ')');
+
+
+var delais=getDur();
+function getDur()
+{
+	var valDur=$('#hardness').val();
+	var hard=0;
+	if(valDur=="normal")
+	{
+		hard=800;
+	}
+	if(valDur=="easy")
+	{
+		hard=1000;
+	}
+	if(valDur=="hard")
+	{
+		hard=500;
+	}
+	if(valDur=="hardcore")
+	{
+		hard=200;
+	}
+	if(valDur=="impossible")
+	{
+		hard=70;
+	}
+	return hard;
+}
+function sortTaupe()
+{	
+		var delais=getDur();
+		var play=$('.play').val();
+		peutcliker=true;
+		var number = 1 + Math.floor(Math.random() * 6);
+		if(play=="Pause" && compte>0 && compte<32)
+		{
+	
+			$('#taupe'+number).animate(
+				{
+					'marginTop' : "-=72px" 
+				},
+				{
+					queue:true,
+					duration:50
+				}).delay(delais).animate({
+					'marginTop' : "+=72px" 
+					},
+					{
+						queue:true,
+						duration:50
+					});
+					
+
+			setTimeout(sortTaupe,2000); /* rappel après 2 secondes = 2000 millisecondes */
+		}
+}
+
+$('.reset').click(function () 
+{
+	$('#points').text("0");
+	$('#points1').text("0");
+	$('#points2').text("0");
+	compte=0;
+	gererTimer();
+	$('#compt').text("");
+	
+});
+
+$('.taupe').click(function () 
+{
+	var margin= $(this).css('margin-top');
+	var delai=getDur();
+	var isTriop=$(this).attr('id');
+	var lastChar = isTriop.substr(isTriop.length - 1);
+	
+	if(margin!='110px' && margin!='360px' && peutcliker)
+	{
+		if(margin!="110px" && margin!="360px")
+		{
+			$(this).stop();
+			if(lastChar<4)
+			{
+				$(this).animate({'marginTop' : "110px" },{	queue:true,	duration:50	});
+			}
+			else
+			{
+				$(this).animate({'marginTop' : "360px" },{	queue:true,	duration:50	});
+			}
+			
+		}
+		var points= parseInt($('#points').text());
+		$('#points').text(points+1);
+		var points= parseInt($('#points1').text());
+		$('#points1').text(points+1);
+		peutcliker=false;
+		if(lastChar==triop)
+		{
+				var points= parseInt($('#points').text());
+				$('#points').text(points+2);
+				var points= parseInt($('#points1').text());
+				$('#points1').text(points-1);
+				var points= parseInt($('#points2').text());
+				$('#points2').text(points+1);
+		}
+		
+		
+	}
+}
+);
+
+
+
+$('.play').click(function () 
+{
+	var play=$('.play').val();
+	
+	if(play=="Pause")
+	{
+		$('.play').val("Jouer");
+		clearInterval(timer);
+	}
+	if(play=="Jouer")
+	{
+		$('.play').val("Pause");
+		clearInterval(timer);
+		timer=setInterval(function() { gererTimer();}, 1000);
+	}
+	if(play=="Commencer")
+	{
+		compte=21;
+		$('.play').val("Pause");
+		clearInterval(timer);
+		$('#points').text("0");
+		$('#points1').text("0");
+		$('#points2').text("0");
+		$('#compt').text("");
+		timer=setInterval(function() { gererTimer();}, 1000);
+		
+	}
+	setTimeout(function(){	
+	sortTaupe();
+	},1000);
+});	
+function gererTimer()
+{	
+	if(compte>0)
+	{
+		compte--;
+		var pluriel="";
+		if(compte>1) { pluriel="s"; }
+		$('#compt').text("Il vous reste "+compte+" seconde"+pluriel);
+	}
+	if(compte==0)
+	{
+		$('.play').val("Commencer");
+		clearInterval(timer);
+		$('#compt').text("C'est terminé ! ");
+
+	}
+}
+
+});
+/////
+</script>
+</head>
+<body>
+</br>
+
+<div id="difficulté">
+	La difficulté : <select name="hardness" id="hardness">
+	<option value="easy">Facile</option>
+	<option value="normal" selected>Normal</option> 
+	<option value="hard">Difficile</option>
+	<option value="hardcore">Hardcore</option>
+	<option value="impossible">Impossible</option><
+	</select>
+	</br>
+	<span style="font-size:27px">Vous avez <span id="points" style="color:#7600AD">0</span> points (
+	<span  style="color:#7600AD" id="points1">0</span> taupiqueur(s) et 
+	<span id="points2" style="color:#7600AD">0</span> triopiqueur(s) ) </span>
+	<br>
+	<input type="button" value="Commencer" class="play" id="submitButton">&nbsp;&nbsp;<input class="reset" type="button" value="Remmetre à 0" id="submitButton">
+	<span id="compt"></span>
+	</div>
+<div id="taupe1" class="taupe"></div>
+<div id="trou1" class="trou"></div>
+
+<div id="taupe2" class="taupe"></div>
+<div id="trou2" class="trou"></div>
+
+<div id="taupe3" class="taupe"></div>
+<div id="trou3" class="trou"></div>
+
+<div id="taupe4" class="taupe"></div>
+<div id="trou4" class="trou"></div>
+
+<div id="taupe5" class="taupe"></div>
+<div id="trou5" class="trou"></div>
+
+<div id="taupe6" class="taupe"></div>
+<div id="trou6" class="trou"></div>
+</body>
+</html>

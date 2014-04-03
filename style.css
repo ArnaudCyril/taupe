@@ -1,0 +1,186 @@
+html { 
+  margin:0;
+  padding:0;
+  background: url(images/fond.jpg) no-repeat center fixed; 
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+  cursor:url(images/poke.png),pointer;
+}
+.taupe
+{
+
+background:url(images/taupe1.png);
+position:absolute;
+ background-size: cover; /* version standardisée */
+width:184px;
+height:112px;
+z-index:2;
+
+}
+.trou
+{
+background:url(images/trou1.png);
+position:absolute;
+ background-size: cover; /* version standardisée */
+width:184px;
+height:112px;
+z-index:3;
+border-bottom-right-radius:7px;
+border-bottom-left-radius:7px;
+border : 1px solid black;
+border-radius:7px;
+border-top:none;
+}
+#taupe1 {
+ margin-left:10%;margin-top:110px;
+}
+#trou1{  margin-left:10%;margin-top:150px; }
+
+#taupe2 { margin-left:30%;margin-top:110px; }
+#trou2{  margin-left:30%;margin-top:150px; }
+
+#taupe3 { margin-left:50%;margin-top:110px; }
+#trou3{  margin-left:50%;margin-top:150px; }
+
+#taupe4 { margin-left:10%;margin-top:360px; }
+#trou4{  margin-left:10%;margin-top:400px; }
+
+#taupe5 { margin-left:30%;margin-top:360px; }
+#trou5{  margin-left:30%;margin-top:400px; }
+
+#taupe6 { margin-left:50%;margin-top:360px; }
+#trou6{  margin-left:50%;margin-top:400px; }
+
+#submitButton {
+        
+        -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+        box-shadow:inset 0px 1px 0px 0px #97c4fe;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0));
+        background:-moz-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+        background:-webkit-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+        background:-o-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+        background:-ms-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+        background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0',GradientType=0);
+        
+        background-color:#3d94f6;
+        
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        border-radius:6px;
+        
+        border:1px solid #337fed;
+        cursor:pointer;
+        display:inline-block;
+        color:#ffffff;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 24px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #1570cd;
+        
+}
+#submitButton:hover {
+    
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6));
+        background:-moz-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+        background:-webkit-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+        background:-o-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+        background:-ms-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+        background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6',GradientType=0);
+        
+        background-color:#1e62d0;
+}
+#submitButton:active {
+        position:relative;
+        top:1px;
+}
+#score{
+
+font-size:28px;
+font-style:italic;
+color:#777;
+position:absolute;
+margin-top:5%;
+margin-left:30%;
+}
+#difficulté  select{
+border-color:blue;
+height:30px;
+font-size:20px;
+font-style:italic;
+color:#444;
+}
+#difficulté
+{
+background:#bbb;
+border-radius:5px;
+border:1px dashed #999;
+color:#555;
+font-style:italic;
+font-size:20px;
+margin-left:10%;
+max-width:50%;
+padding : 8px 20px;
+
+}
+#catch{
+color:red;
+font-style:italic;
+font-size:20px;
+
+}
+@media screen and (max-width: 1280px) {
+
+  .taupe
+{
+
+background:url(images/thom.png);
+position:absolute;
+ background-size: cover; /* version standardisée */
+width:184px;
+height:112px;
+z-index:2;
+max-width:30%;
+}
+.trou
+{
+background:url(images/trou1.png);
+position:absolute;
+ background-size: cover; /* version standardisée */
+width:184px;
+height:112px;
+z-index:3;
+border-bottom-right-radius:7px;
+border-bottom-left-radius:7px;
+border : 1px solid black;
+border-radius:7px;
+border-top:none;
+max-width:30%;
+}
+#taupe1 {
+ margin-left:1%;margin-top:110px;
+}
+#trou1{  margin-left:1%;margin-top:150px; }
+
+#taupe2 { margin-left:32%;margin-top:110px; }
+#trou2{  margin-left:32%;margin-top:150px; }
+
+#taupe3 { margin-left:63%;margin-top:110px; }
+#trou3{  margin-left:63%;margin-top:150px; }
+
+#taupe4 { margin-left:1%;margin-top:360px; }
+#trou4{  margin-left:1%;margin-top:400px; }
+
+#taupe5 { margin-left:32%;margin-top:360px; }
+#trou5{  margin-left:32%;margin-top:400px; }
+
+#taupe6 { margin-left:63%;margin-top:360px; }
+#trou6{  margin-left:63%;margin-top:400px; }
+}
